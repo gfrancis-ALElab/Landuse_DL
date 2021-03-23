@@ -26,7 +26,13 @@ import numpy as np
 
 # wall_time_to_relative time
 def wall_time_to_relative_time(wall_time_list):
+<<<<<<< HEAD
     diff_hours = [ (wall_time_list[idx+1] - wall_time_list[idx]) for idx in range(len(wall_time_list) - 1) ]
+=======
+    if len(wall_time_list) < 2:
+        return 0, 0
+    diff_hours = [ (wall_time_list[idx+1] - wall_time_list[idx])/3600 for idx in range(len(wall_time_list) - 1) ]
+>>>>>>> upstream/master
     mean_diff = sum(diff_hours)/len(diff_hours)
     # mean_diff = 0
 
