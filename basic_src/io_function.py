@@ -343,7 +343,7 @@ def copy_file_to_dst(file_path, dst_name, overwrite=False):
         return True
 
 
-def move_file_to_dst(file_path, dst_name,overwrite=False):
+def move_file_to_dst(file_path, dst_name, overwrite=False):
     """
     move file to a destination file
     Args:

@@ -120,11 +120,13 @@ def _convert_dataset(dataset_split):
     image_reader = build_data.ImageReader('png', channels=3)
     label_reader = build_data.ImageReader('png', channels=1)
 
-    os.system("mkdir -p " + FLAGS.output_dir)
+    # os.system("mkdir -p " + FLAGS.output_dir)
+    os.system("mkdir -p " + os.getcwd() + '\\tfrecord')
 
     for shard_id in range(_NUM_SHARDS):
         output_filename = os.path.join(
-            FLAGS.output_dir,
+            # FLAGS.output_dir,
+            os.getcwd() + '\\tfrecord',
             '%s-%05d-of-%05d.tfrecord' % (dataset, shard_id, _NUM_SHARDS))
         with tf.python_io.TFRecordWriter(output_filename) as tfrecord_writer:
           start_idx = shard_id * num_per_shard

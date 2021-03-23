@@ -28,6 +28,8 @@ import basic_src.basic as basic
 
 from workflow.deeplab_train import get_trained_iteration
 
+import platform
+
 # the python with tensorflow 1.x installed
 tf1x_python = 'python'
 
@@ -110,7 +112,8 @@ def b_all_task_finish(all_tasks):
 def main(options, args):
 
     print("%s : prediction using the trained model (run parallel if use multiple GPUs) " % os.path.basename(sys.argv[0]))
-    machine_name = os.uname()[1]
+    # machine_name = os.uname()[1]
+    machine_name = platform.platform()
     start_time = datetime.datetime.now()
 
     para_file = args[0]
@@ -267,5 +270,3 @@ if __name__ == '__main__':
         sys.exit(2)
 
     main(options, args)
-
-

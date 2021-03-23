@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Filename: deeplab_train 
+# Filename: deeplab_train
 """
 introduction: run the training and evaluation of deeplab
 
@@ -321,7 +321,8 @@ def train_evaluation_deeplab(WORK_DIR,deeplab_dir,expr_name, para_file, network_
     io_function.mkdir(EXPORT_DIR)
 
     # prepare the tensorflow check point (pretrained model) for training
-    pre_trained_dir = parameters.get_directory_None_if_absence(network_setting_ini, 'pre_trained_model_folder')
+    # pre_trained_dir = parameters.get_directory_None_if_absence(network_setting_ini, 'pre_trained_model_folder')
+    pre_trained_dir = parameters.get_string_parameters(network_setting_ini, 'pre_trained_model_folder')
     pre_trained_tar = parameters.get_string_parameters(network_setting_ini, 'TF_INIT_CKPT')
     pre_trained_path = os.path.join(pre_trained_dir, pre_trained_tar)
     if os.path.isfile(pre_trained_path) is False:
@@ -510,8 +511,8 @@ def train_evaluation_deeplab_separate(WORK_DIR,deeplab_dir,expr_name, para_file,
     # unpack pre-trained model to INIT_FOLDER
     os.chdir(INIT_FOLDER)
     res = os.system('tar -xf %s'% pre_trained_path)
-    if res != 0:
-        raise IOError('failed to unpack %s'%pre_trained_path)
+    # if res != 0:
+    #     raise IOError('failed to unpack %s'%pre_trained_path)
     os.chdir(WORK_DIR)
 
     dataset_dir = os.path.join(WORK_DIR, 'tfrecord')
@@ -726,7 +727,8 @@ def deeplab_train_main(para_file,gpu_num):
         raise IOError('File %s not exists in current folder: %s' % (para_file, os.getcwd()))
 
     network_setting_ini = parameters.get_string_parameters(para_file, 'network_setting_ini')
-    tf_research_dir = parameters.get_directory_None_if_absence(network_setting_ini, 'tf_research_dir')
+    # tf_research_dir = parameters.get_directory_None_if_absence(network_setting_ini, 'tf_research_dir')
+    tf_research_dir = parameters.get_string_parameters(para_file, 'tf_research_dir')
     print(tf_research_dir)
     if tf_research_dir is None:
         raise ValueError('tf_research_dir is not in %s' % para_file)
@@ -777,13 +779,3 @@ if __name__ == '__main__':
         sys.exit(2)
 
     main(options, args)
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Filename: plot_miou_loss_curve.py 
+# Filename: plot_miou_loss_curve.py
 """
 introduction: plot curve of training loss, learning, and miou.
 
@@ -26,8 +26,9 @@ import numpy as np
 
 # wall_time_to_relative time
 def wall_time_to_relative_time(wall_time_list):
-    diff_hours = [ (wall_time_list[idx+1] - wall_time_list[idx])/3600 for idx in range(len(wall_time_list) - 1) ]
+    diff_hours = [ (wall_time_list[idx+1] - wall_time_list[idx]) for idx in range(len(wall_time_list) - 1) ]
     mean_diff = sum(diff_hours)/len(diff_hours)
+    # mean_diff = 0
 
     relative_time = [0,mean_diff]
     acc_time = mean_diff
@@ -39,7 +40,7 @@ def wall_time_to_relative_time(wall_time_list):
     # return ["%.2f" % item for item in relative_time]
     return min(relative_time), max(relative_time)
 
-def plot_miou_step_time(miou_dict, save_path,train_count, val_count,batch_size):
+def plot_miou_step_time(miou_dict, save_path, train_count, val_count,batch_size):
 
     # class_0
     # class_1

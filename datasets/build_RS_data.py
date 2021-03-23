@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Filename: build_RS_data 
+# Filename: build_RS_data
 """
 introduction: Convert Remote Sensing images (one band or three bands) to TF record for training
 
@@ -16,7 +16,7 @@ import sys
 # import tensorflow as tf
 
 HOME = os.path.expanduser('~')
-basicCodes_path = HOME + '/codes/PycharmProjects/DeeplabforRS'
+basicCodes_path = HOME + '/documents/deeplab/landuse_dl'
 sys.path.append(basicCodes_path)
 
 # package for remote sensing images
@@ -729,4 +729,3 @@ def main(unused_argv):
 if __name__ == '__main__':
   # tf.app.run()
   pass
-

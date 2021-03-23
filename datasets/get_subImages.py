@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Filename: get_subImages 
+# Filename: get_subImages
 """
 introduction: get sub Images (and Labels) from training polygons directly, without gdal_rasterize
 
@@ -486,7 +486,7 @@ def get_sub_images_and_labels(t_polygons_shp, t_polygons_shp_all, bufferSize, im
     t_shapefile = gpd.read_file(t_polygons_shp)
     center_polygons = t_shapefile.geometry.values
     if b_label:
-        class_labels = t_shapefile['class_int'].tolist()
+        class_labels = t_shapefile['Id'].tolist()
     else:
         class_labels = [0]*len(center_polygons)
     # check_polygons_invalidity(center_polygons,t_polygons_shp)
@@ -495,7 +495,7 @@ def get_sub_images_and_labels(t_polygons_shp, t_polygons_shp_all, bufferSize, im
     t_shapefile_all = gpd.read_file(t_polygons_shp_all)
     polygons_all = t_shapefile_all.geometry.values
     if b_label:
-        class_labels_all = t_shapefile_all['class_int'].tolist()
+        class_labels_all = t_shapefile_all['Id'].tolist()
     else:
         class_labels_all = [0]*len(polygons_all)
     # check_polygons_invalidity(polygons_all,t_polygons_shp_all)
